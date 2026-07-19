@@ -63,7 +63,7 @@ while true; do
     echo "-----------------------------------------"
     echo "1) View summary"
     echo "2) View full diff"
-    echo "3) Continue"
+    echo "3) Continue to commit"
     echo
 
     read -rp "Choice: " review_choice
