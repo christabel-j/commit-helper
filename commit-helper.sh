@@ -58,9 +58,41 @@ echo "-----------------------------------------"
 git status
 
 echo
-echo -e "${YELLOW}Changes that will be committed:${NC}"
-echo "-----------------------------------------"
-git diff --cached
+while true; do
+    echo -e "${YELLOW}Review staged changes:${NC}"
+    echo "-----------------------------------------"
+    echo "1) View summary"
+    echo "2) View full diff"
+    echo "3) Continue"
+    echo
+
+    read -rp "Choice: " review_choice
+
+    case "$review_choice" in
+        1)
+            echo
+            echo -e "${YELLOW}Summary:${NC}"
+            echo "-----------------------------------------"
+            git diff --cached --stat
+            echo
+            ;;
+        2)
+            echo
+            echo -e "${YELLOW}Full diff:${NC}"
+            echo "-----------------------------------------"
+            git diff --cached
+            echo
+            ;;
+        3)
+            break
+            ;;
+        *)
+            echo
+            echo -e "${RED}Invalid choice. Please enter 1, 2 or 3.${NC}"
+            echo
+            ;;
+    esac
+done
 
 echo
 
