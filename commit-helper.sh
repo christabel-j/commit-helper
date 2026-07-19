@@ -10,7 +10,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Colour
 
 echo -e "${BLUE}=========================================${NC}"
-echo -e "${BLUE}         Git Helper Script${NC}"
+echo -e "${BLUE}         Git Commit Helper Script${NC}"
 echo -e "${BLUE}=========================================${NC}"
 echo
 
