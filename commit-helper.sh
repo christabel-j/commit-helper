@@ -104,8 +104,39 @@ case "$commit_confirm" in
         ;;
     *)
         echo
-        echo -e "${YELLOW}Commit cancelled. Your changes remain staged.${NC}"
-        exit 0
+        echo -e "${YELLOW}Commit cancelled.${NC}"
+        echo
+
+        while true; do
+            echo "What would you like to do?"
+            echo "-----------------------------------------"
+            echo "1) Leave changes staged and exit"
+            echo "2) Unstage all changes and exit"
+            echo
+
+            read -rp "Choice: " cancel_choice
+
+            case "$cancel_choice" in
+                1)
+                    echo
+                    echo -e "${GREEN}Changes remain staged.${NC}"
+                    exit 0
+                    ;;
+                2)
+                    echo
+                    echo -e "${YELLOW}Unstaging changes...${NC}"
+                    git restore --staged .
+                    echo
+                    echo -e "${GREEN}✓ Changes have been unstaged.${NC}"
+                    exit 0
+                    ;;
+                *)
+                    echo
+                    echo -e "${RED}Invalid choice. Please enter 1 or 2.${NC}"
+                    echo
+                    ;;
+            esac
+        done
         ;;
 esac
 
